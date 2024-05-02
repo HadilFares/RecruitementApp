@@ -1,0 +1,61 @@
+﻿@model User
+@{
+
+    Layout = "LoginL";
+}
+<div class="form-container sign-upp-container">
+    <form asp-action="Register" method="post">
+        @Html.AntiForgeryToken()
+        <h2>Register</h2>
+        <div class="row">
+            <!-- Left side -->
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="LastName"></label>
+                    <input asp-for="LastName" class="form-control" />
+                    <span asp-validation-for="LastName"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Name"></label>
+                    <input asp-for="Name" class="form-control" />
+                    <span asp-validation-for="Name"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Numero"></label>
+                    <input asp-for="Numero" class="form-control" />
+                    <span asp-validation-for="Numero"></span>
+                </div>
+            </div>
+
+            <!-- Right side -->
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="Email"></label>
+                    <input asp-for="Email" class="form-control" />
+                    <span asp-validation-for="Email"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Password"></label>
+                    <input asp-for="Password" type="password" class="form-control" />
+                    <span asp-validation-for="Password"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Role"></label>
+                    <select asp-for="Role" class="form-control">
+                        <option value="Employee">Employee</option>
+                        <option value="Rh">Rh</option>
+                        <option value="Admin">Admin</option>
+                     
+                    </select>
+                    <span asp-validation-for="Role"></span>
+                </div>
+            </div>
+        </div>
+
+        <button type="submit" class="Registerbtn">Register</button>
+    </form>
+</div>

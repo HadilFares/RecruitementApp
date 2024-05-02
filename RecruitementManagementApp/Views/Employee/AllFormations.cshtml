@@ -1,0 +1,166 @@
+﻿@model IEnumerable<RecruitementManagementApp.Models.Formation>
+
+@{
+    ViewData["Title"] = "AllFormations";
+       Layout = "DashCandL";
+}
+
+
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<link href="https://use.fontawesome.com/releases/v5.0.11/css/all.css" rel="stylesheet">
+
+
+
+
+
+
+
+
+
+
+<input type="checkbox" id="sidebar-toggle">
+<div class="sidebar">
+       
+
+        <div class="sidebar-header">
+
+            <h3 class="brand">
+
+                <bold> Dashboard</bold>
+            </h3>
+
+            <label for="sidebar-toggle" class="ti-menu-alt"></label>
+        </div>
+
+
+
+    <div class="sidebar-menu">
+        <ul>
+
+            <li>
+                <a  asp-controller="Employee" asp-action="AllFormations">
+                    <span class="active-menu">
+                        <span class="ti-stats-up"></span>
+                        <span>All Formations</span>
+                    </span>
+                </a>
+
+            </li>
+
+
+            <li>
+
+                <a asp-controller="Employee" asp-action="Suivremesdemandes">
+                    <span class="ti-check-box"> </span>
+                    <span>Mes demandes</span>
+                </a>
+            </li>
+            <li>
+                <a asp-controller="Employee" asp-action="DetailsProfile">
+            <span class="ti-user"> </span>
+            <span>Profile Détails</span>
+                </a>
+            </li>
+
+            <li>
+                <a  asp-controller="User" asp-action="Logout">
+                    <span class="ti-power-off"> </span>
+                <span>LogOut</span>
+                </a>
+            </li>
+
+            </ul>
+            </div>
+            </div>
+
+
+
+<div class="main-content">
+    <main>
+
+        <h2 class="dash-title">All Formations</h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <!------<h1>AllOffres</h1>----->
+
+@if (TempData["SuccessMessage"] != null || TempData["ErrorMessage"] != null)
+{
+    <div id="notificationMessage" class="alert @(TempData["SuccessMessage"] != null ? "alert-success" : "alert-danger")">
+        @(TempData["SuccessMessage"] ?? TempData["ErrorMessage"])
+    </div>
+
+    <script>
+        // Automatically hide the notification message after 5 seconds
+        setTimeout(function () {
+            $('#notificationMessage').fadeOut('slow');
+        }, 5000);
+    </script>
+}
+
+
+<form class="form-inline my-2 my-lg-0" asp-controller="Employee" asp-action="FilterFormation" style="padding-right: 25px;">
+    <div class="col">
+        <input name="searchString" type="text" class="form-control" placeholder="Search for formations..." aria-label="Recipient's username" aria-describedby="button-addon2">
+    </div>
+    
+</form>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            
+            <th>
+                @Html.DisplayNameFor(model => model.LeRh)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+    
+            <td>
+                @Html.DisplayFor(modelItem => item.LeRh.Name)
+            </td>
+
+                <td>
+                    <a asp-action="Details" asp-controller="Employee" asp-route-id="@item.IdFormation">Details</a>
+                    <a asp-action="Postuler" asp-controller="Employee" asp-route-id="@item.IdFormation">Postuler</a>
+                 
+                  
+
+                </td>
+        </tr>
+}
+    </tbody>
+</table>
+</main>
+ </div>      

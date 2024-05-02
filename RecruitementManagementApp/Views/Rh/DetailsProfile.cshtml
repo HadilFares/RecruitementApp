@@ -1,0 +1,112 @@
+﻿@model RecruitementManagementApp.Models.Rh
+
+@{
+    ViewData["Title"] = "DetailsProfile";
+    Layout = "EntrepriseL";
+}
+
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<link href="https://use.fontawesome.com/releases/v5.0.11/css/all.css" rel="stylesheet">
+
+
+
+
+        <input type="checkbox" id="sidebar-toggle">
+        <div class="sidebar">
+
+
+            <div class="sidebar-header">
+
+                <h3 class="brand">
+
+                    <bold> Dashboard</bold>
+                </h3>
+
+                <label for="sidebar-toggle" class="ti-menu-alt"></label>
+            </div>
+
+
+
+            <div class="sidebar-menu">
+                <ul>
+
+                    <li>
+                        <a asp-controller="Formations" asp-action="Index">
+
+                                <span class="ti-stats-up"></span>
+                                <span>My Formations</span>    
+                        </a>
+
+                    </li>
+
+
+                    <li>
+
+                        <a asp-controller="Rh" asp-action="lesemployeesSelonFormation">
+                            <span class="ti-check-box"> </span>
+                            <span>Employees selon Formation</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a asp-controller="Rh" asp-action="DetailsProfile">
+                            <span class="active-menu">
+                            <span class="ti-user"> </span>
+                            <span>Profile Détails</span>
+                            </span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a asp-controller="User" asp-action="Logout">
+                            <span class="ti-power-off"> </span>
+                            <span>LogOut</span>
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+   
+
+<div class="main-content">
+    <main>
+
+        <h2 class="dash-title">Profile</h2>
+
+
+
+<div>
+    <h4>Rh</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.adresse)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.adresse)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Numero)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Numero)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="EditProfile" asp-controller="Rh" asp-route-id="@Model?.IdRh">Edit</a> |
+    <a asp-action="Index" asp-controller="Formations">Back to Formations</a>
+</div>
+
+        </main>
+        </div>

@@ -1,0 +1,117 @@
+﻿@model IEnumerable<RecruitementManagementApp.Models.EmployeeFormation>
+
+@{
+    ViewData["Title"] = "Suivremesdemandes";
+    Layout = "DashCandL";
+}
+
+
+<input type="checkbox" id="sidebar-toggle">
+<div class="sidebar">
+
+
+    <div class="sidebar-header">
+
+        <h3 class="brand">
+
+            <bold> Dashboard</bold>
+        </h3>
+
+        <label for="sidebar-toggle" class="ti-menu-alt"></label>
+    </div>
+
+
+
+    <div class="sidebar-menu">
+        <ul>
+
+            <li>
+                <a asp-controller="Employee" asp-action="AllFormations">
+
+                    <span class="ti-stats-up"></span>
+                    <span>All Formations</span>
+
+                </a>
+
+            </li>
+
+
+            <li>
+
+                <a asp-controller="Employee" asp-action="Suivremesdemandes">
+                    <span class="active-menu">
+                    <span class="ti-check-box"> </span>
+                    <span>Mes demandes</span>
+                    </span>
+                </a>
+            </li>
+            <li>
+                <a asp-controller="Employee" asp-action="DetailsProfile">
+                   
+                        <span class="ti-user"> </span>
+                        <span>Profile Détails</span>
+                    
+                </a>
+            </li>
+
+            <li>
+                <a asp-controller="User" asp-action="Logout">
+                    <span class="ti-power-off"> </span>
+                    <span>LogOut</span>
+                </a>
+            </li>
+
+        </ul>
+    </div>
+</div>
+
+
+
+<div class="main-content">
+    <main>
+
+        <h2 class="dash-title">Suivre mes demandes</h2>
+
+
+
+@* <p>
+    <a asp-action="Create">Create New</a>
+</p> *@
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Formation.LeRh.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Formation.Title)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                    @Html.DisplayFor(modelItem => item.Formation.LeRh.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Formation.Title)
+            </td>
+            @* <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td> *@
+        </tr>
+}
+    </tbody>
+</table>
+</main>
+</div>
